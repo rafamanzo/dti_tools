@@ -1,4 +1,4 @@
-# DtiTools
+# DTITools
 
 TODO: Write a gem description
 

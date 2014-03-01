@@ -5,13 +5,12 @@ require 'dti_tools/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "dti_tools"
-  spec.version       = DtiTools::VERSION
+  spec.version       = DTITools::VERSION
   spec.authors       = ["Rafael Reggiain Manzo"]
   spec.email         = ["rr.manzo@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
-  spec.homepage      = ""
-  spec.license       = "MIT"
+  spec.description   = "Diffusion Tensor Image tools for my MSc"
+  spec.summary       = "DTI tools"
+  spec.license       = "LGPLv3"
 
   spec.files         = `git ls-files`.split($/)
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }

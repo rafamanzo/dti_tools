@@ -1,5 +1,5 @@
 require "dti_tools/version"
 
-module DtiTools
+module DTITools
   # Your code goes here...
 end
