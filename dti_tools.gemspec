@@ -6,7 +6,7 @@ require 'dti_tools/version'
 Gem::Specification.new do |spec|
   spec.name          = "dti_tools"
   spec.version       = DTITools::VERSION
-  spec.authors       = ["Rafael Reggiain Manzo"]
+  spec.authors       = ["Rafael Reggiani Manzo"]
   spec.email         = ["rr.manzo@gmail.com"]
   spec.description   = "Diffusion Tensor Image tools for my MSc"
   spec.summary       = "DTI tools"
@@ -19,4 +19,10 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.3"
   spec.add_development_dependency "rake"
+
+  # Tests
+  spec.add_development_dependency "rspec", "~> 2.14"
+  spec.add_development_dependency "mocha", "~> 1.0.0"
+  spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "factory_girl", "~> 4.4"
 end
