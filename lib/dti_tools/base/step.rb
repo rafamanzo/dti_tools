@@ -14,29 +14,26 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-require 'mocha/api'
+module DTITools
+  module Base
+    class Step
+      def valid_args?; raise NotImplementedError; end
 
-# Test coverage report
-require 'simplecov'
-SimpleCov.start do
-  add_filter "/spec/"
-end
+      def load_data; raise NotImplementedError; end
 
-require 'dti_tools'
+      def process; raise NotImplementedError; end
 
-require 'factory_girl'
-FactoryGirl.find_definitions
+      def save; raise NotImplementedError; end
 
-RSpec.configure do |config|
-  # ## Mock Framework
-  config.mock_with :mocha
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = "random"
-
-  # Colors
-  config.color_enabled = true
+      def run
+        if self.valid_args?
+          self.load_data
+          self.process
+          self.save
+        else
+          return false
+        end
+      end
+    end
+  end
 end

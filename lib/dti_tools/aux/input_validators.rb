@@ -14,29 +14,28 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-require 'mocha/api'
+module DTITools
+  module Aux
+    module InputValidators
+      def validate_tensor(argv_index)
+        if !File.file?(ARGV[argv_index])
+          raise ArgumentError.new("The given tensor file does not exists:\n#{ARGV[argv_index]}")
+        end
 
-# Test coverage report
-require 'simplecov'
-SimpleCov.start do
-  add_filter "/spec/"
-end
+        return true
+      end
 
-require 'dti_tools'
+      def validate_mask(argv_index)
+        if !File.file?(ARGV[argv_index])
+          raise ArgumentError.new("The given mask file does not exists:\n#{ARGV[argv_index]}")
+        end
 
-require 'factory_girl'
-FactoryGirl.find_definitions
+        return true
+      end
 
-RSpec.configure do |config|
-  # ## Mock Framework
-  config.mock_with :mocha
-
-  # Run specs in random order to surface order dependencies. If you find an
-  # order dependency and want to debug it, you can fix the order by providing
-  # the seed, which is printed after each run.
-  #     --seed 1234
-  config.order = "random"
-
-  # Colors
-  config.color_enabled = true
+      def validate_tensor_and_mask(argv_tensor_index, argv_mask_index)
+        return (validate_tensor(argv_tensor_index) && validate_mask(argv_mask_index))
+      end
+    end
+  end
 end
