@@ -17,22 +17,13 @@
 module DTITools
   module Base
     class Step
-      def valid_args?; raise NotImplementedError; end
-
-      def load_data; raise NotImplementedError; end
-
       def process; raise NotImplementedError; end
 
       def save; raise NotImplementedError; end
 
       def run
-        if self.valid_args?
-          self.load_data
-          self.process
-          self.save
-        else
-          return false
-        end
+        self.process
+        self.save
       end
     end
   end

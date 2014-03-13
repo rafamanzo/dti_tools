@@ -17,7 +17,7 @@
 require 'spec_helper'
 
 describe DTITools::Base::ThresholdMapStep do
-  subject { DTITools::Base::ThresholdMapStep.new('test') }
+  subject { DTITools::Base::ThresholdMapStep.new('test', 'test_t', 'test_m', 1.5) }
 
   describe 'validate_args' do
     before :each do

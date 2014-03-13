@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+require "thor"
+require 'dti_tools'
+require 'dti_tools/aux/input_validators'
+
+class DTIToolsExec < Thor
+  include DTITools::Aux::InputValidators
+
+  desc "fa_threshold TENSOR_FILE MASK_FILE THRESHOLD", "Produces a mask of voxels with FA value greater or equal than the given threshold"
+  def fa_threshold(tensor_file, mask_file, threshold)
+    DTITools::FAThresholdMapStep.new(tensor_file, mask_file, threshold).run if validate_tensor_and_mask(tensor_file.to_s, mask_file)
+  end
+end
+
+DTIToolsExec.start

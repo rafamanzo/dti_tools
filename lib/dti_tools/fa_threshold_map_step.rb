@@ -16,8 +16,8 @@
 
 module DTITools
   class FAThresholdMapStep < DTITools::Base::ThresholdMapStep
-    def initialize
-      super("fa")
+    def initialize(tensor_file, mask_file, threshold)
+      super("fa", tensor_file, mask_file, threshold)
     end
 
     def check_for_threshold(tensor)

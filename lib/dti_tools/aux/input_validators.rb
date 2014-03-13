@@ -17,24 +17,24 @@
 module DTITools
   module Aux
     module InputValidators
-      def validate_tensor(argv_index)
-        if !File.file?(ARGV[argv_index])
-          raise ArgumentError.new("The given tensor file does not exists:\n#{ARGV[argv_index]}")
+      def validate_tensor(file)
+        if !File.file?(file)
+          raise ArgumentError.new("The given tensor file does not exists:\n#{file}")
         end
 
         return true
       end
 
-      def validate_mask(argv_index)
-        if !File.file?(ARGV[argv_index])
-          raise ArgumentError.new("The given mask file does not exists:\n#{ARGV[argv_index]}")
+      def validate_mask(file)
+        if !File.file?(file)
+          raise ArgumentError.new("The given mask file does not exists:\n#{file}")
         end
 
         return true
       end
 
-      def validate_tensor_and_mask(argv_tensor_index, argv_mask_index)
-        return (validate_tensor(argv_tensor_index) && validate_mask(argv_mask_index))
+      def validate_tensor_and_mask(tensor_file, mask_file)
+        return (validate_tensor(tensor_file) && validate_mask(mask_file))
       end
     end
   end

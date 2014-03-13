@@ -24,37 +24,16 @@ module DTITools
 
       attr_accessor :__file_prefix, :__threshold, :__tensor_data, :__mask_data, :__threshold_mask, :__threshold_mask_data
 
-      def initialize(file_prefix)
+      def initialize(file_prefix, tensor_file, mask_file, threshold)
         super()
         self.__file_prefix = file_prefix
-        self.__threshold = 0.0
-        self.__tensor_data = [[[[]]]]
-        self.__mask_data = [[[[]]]]
-        self.__threshold_mask = nil
-        self.__threshold_mask_data = [[[]]]
-      end
 
-      def validate_args
-        if ARGV.count != 3
-          $stderr.puts "This program expects three arguments: tensor file; mask file; and threshold."
-          exit(1)
-        end
-        begin
-          validate_tensor_and_mask(0,1)
-        rescue ArgumentError => e
-          $stderr.puts "#{e.class}: #{e.message}"
-          exit(1)
-        end
-      end
+        self.__threshold = threshold.to_f
 
-      def load_data
-        self.__tensor_data = NIFTI::NObject.new(ARGV[0]).get_nimage
-        mask = NIFTI::NObject.new(ARGV[1])
+        self.__tensor_data = NIFTI::NObject.new(tensor_file).get_nimage
+
+        mask = NIFTI::NObject.new(self.__mask_file)
         self.__mask_data = mask.get_nimage
-
-        self.__threshold = ARGV[2].to_f
-
-        self.__shape = self.__mask_data.shape
 
         self.__threshold_mask = NIFTI::NObject.new
         self.__threshold_mask.header = mask.header
