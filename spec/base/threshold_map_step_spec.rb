@@ -105,4 +105,44 @@ describe DTITools::Base::ThresholdMapStep do
       subject.load_data
     end
   end
+
+  describe 'check_threshold' do
+    it 'raises an exception' do
+      expect { subject.check_threshold(nil) }.to raise_error(NotImplementedError)
+    end
+  end
+
+  describe 'process_paritition' do
+    let!(:threshold_data) { NIFTI::NImage.new(Array.new(8, 0), [3, 2, 2, 2]) }
+
+    before :each do
+      mask_data = NIFTI::NImage.new(Array.new(8, 0), [3, 2, 2, 2])
+      mask_data[0][0][0] = 1
+      subject.expects(:__mask_data).times(8).returns(mask_data)
+      subject.expects(:__threshold_data).returns(threshold_data)
+      subject.expects(:check_threshold).returns(true)
+    end
+
+    it 'sets the threshold_data at (0,0,0) to 1' do
+      subject.process_partition(0..1, 0..1, 0..1)
+
+      threshold_data[0][0][0].should eq(1)
+    end
+  end
+
+  describe 'save' do
+    let!(:threshold_mask) {mock('ThresholdMask')}
+
+    before :each do
+      subject.expects(:__threshold_mask).returns(threshold_mask)
+    end
+
+    it 'calls NIFTI::NWrite to save' do
+      n_wrt = mock('NWrite')
+      n_wrt.expects(:write).returns(true)
+      NIFTI::NWrite.expects(:new).with(threshold_mask, "test.nii.gz").returns(n_wrt)
+
+      subject.save
+    end
+  end
 end
