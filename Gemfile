@@ -13,9 +13,6 @@ group :development, :test do
   # Fixtures made easy
   gem 'factory_girl', '~> 4.4.0'
 
-  # Easier test writing
-  gem "shoulda-matchers", '~>2.6.1'
-
   # Test coverage
   gem 'simplecov', require: false
 
