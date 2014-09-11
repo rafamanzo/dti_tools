@@ -1,0 +1,11 @@
+coverage
+
+#Datasets
+*.gz
+*.hdr
+*.img
+*.dat
+*.txt
+*.png
+
+data
