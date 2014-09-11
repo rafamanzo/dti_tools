@@ -12,6 +12,11 @@ module DTITools
                            [attributes[:dxz], attributes[:dyz], attributes[:dzz]]
                           ]
         end
+
+        def apparent_diffusion_coefficient(acquisition_direction)
+          (acquisition_direction.vector.transpose*self.matrix*acquisition_direction.vector)[0,0]
+        end
+        alias_method :adc, :apparent_diffusion_coefficient
       end
     end
   end
