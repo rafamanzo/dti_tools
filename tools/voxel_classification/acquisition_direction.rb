@@ -1,3 +1,5 @@
+require 'matrix'
+
 module DTITools
   module Tools
     module VoxelClassification
@@ -21,6 +23,10 @@ module DTITools
 
         def z
           @z.to_f
+        end
+
+        def vector
+          Matrix[[self.x], [self.y], [self.z]]
         end
       end
     end
