@@ -8,7 +8,7 @@ group :development, :test do
   gem 'rake'
 
   # Unit tests
-  gem 'rspec', '~> 3.0.0'
+  gem 'rspec', '~> 3.1.0'
 
   # Fixtures made easy
   gem 'factory_girl', '~> 4.4.0'
