@@ -1,4 +1,5 @@
 require "#{File.dirname(__FILE__)}/spherical_harmonics/order_0"
+require "#{File.dirname(__FILE__)}/spherical_harmonics/order_1"
 require "#{File.dirname(__FILE__)}/spherical_harmonics/order_2"
 require "#{File.dirname(__FILE__)}/spherical_harmonics/order_4"
 
