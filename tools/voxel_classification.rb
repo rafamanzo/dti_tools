@@ -2,6 +2,7 @@ require "#{File.dirname(__FILE__)}/voxel_classification/acquisition_direction"
 require "#{File.dirname(__FILE__)}/voxel_classification/spherical_harmonics"
 require "#{File.dirname(__FILE__)}/voxel_classification/tensor"
 require "#{File.dirname(__FILE__)}/voxel_classification/tensor_data"
+require "#{File.dirname(__FILE__)}/voxel_classification/mask"
 
 module DTITools
   module Tools
