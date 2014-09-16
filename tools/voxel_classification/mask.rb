@@ -12,6 +12,10 @@ module DTITools
           @image.data[i][j][k]
         end
 
+        def shape
+          @image.data.shape
+        end
+
         def out?(i,j,k)
           self[i,j,k] == 0
         end
