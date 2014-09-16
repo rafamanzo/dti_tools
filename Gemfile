@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # NIfTI handler
 gem 'c_nifti', '~> 0.0.1'
 
+# Statistical distributions
+gem 'distribution', '~> 0.7.1'
+
 group :development, :test do
   # Automated tasks
   gem 'rake'

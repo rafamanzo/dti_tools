@@ -9,6 +9,7 @@ GEM
       tzinfo (~> 1.1)
     c_nifti (0.0.1)
     diff-lcs (1.2.5)
+    distribution (0.7.1)
     docile (1.1.5)
     factory_girl (4.4.0)
       activesupport (>= 3.0.0)
@@ -46,6 +47,7 @@ PLATFORMS
 
 DEPENDENCIES
   c_nifti (~> 0.0.1)
+  distribution (~> 0.7.1)
   factory_girl (~> 4.4.0)
   mocha
   rake

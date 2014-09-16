@@ -10,7 +10,6 @@ describe DTITools::Tools::VoxelClassification::Model do
 
     subject { DTITools::Tools::VoxelClassification::Model.new(order: 0, coefficients: series.coefficients([tensor.adc(acquisition_direction)])) }
 
-
     it 'is expected to be a Complex' do
       expect(subject.value(acquisition_direction)).to be_a(Complex)
     end
