@@ -6,6 +6,7 @@ require "#{File.dirname(__FILE__)}/voxel_classification/mask"
 require "#{File.dirname(__FILE__)}/voxel_classification/s_h_series_coefficients"
 require "#{File.dirname(__FILE__)}/voxel_classification/model"
 require "#{File.dirname(__FILE__)}/voxel_classification/anova"
+require "#{File.dirname(__FILE__)}/voxel_classification/classifier"
 
 module DTITools
   module Tools

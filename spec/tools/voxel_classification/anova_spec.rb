@@ -12,6 +12,7 @@ describe DTITools::Tools::VoxelClassification::Anova do
 
     it 'is expected to be a boolean' do
       pending 'needs a better setup'
+      Distribution::F.expects(:p_value).returns(1.0)
       expect(subject.equivalent?(0.05)).to be_truthy
     end
   end
