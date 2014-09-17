@@ -18,7 +18,7 @@ module DTITools
             (0..@mask.shape[1]).each do |j|
               (0..@mask.shape[2]).each do |k|
                 if @mask.in?(i,j,k)
-                  @classification[i][j][k] = @classifier.classify(@tensor_data[i,j,k])
+                  @classification.data[i][j][k] = @classifier.classify(@tensor_data[i,j,k])
                 end
               end
             end

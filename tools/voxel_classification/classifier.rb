@@ -9,7 +9,7 @@ module DTITools
 
         def classify(tensor)
           max_order = lmax
-          adcs = apparent_diffusion_coefficients
+          adcs = apparent_diffusion_coefficients(tensor)
 
           selected_model = Model.new(order: 0,
                                      coefficients: SHSeriesCoefficients.new(@acquisition_directions, 0).coefficients(adcs))
@@ -20,7 +20,7 @@ module DTITools
                 new_model = Model.new(order: order,
                                       coefficients: SHSeriesCoefficients.new(@acquisition_directions, order).coefficients(adcs))
 
-                selected_model = new_model unless Anova.new(model_a: selected_model, model_b: new_model, acquisition_directions: @acquisition_directions, tensor: @tensor).equivalent?(@significance_level)
+                selected_model = new_model unless Anova.new(model_a: selected_model, model_b: new_model, acquisition_directions: @acquisition_directions, tensor: tensor).equivalent?(@significance_level)
               end
             end
           end
@@ -46,8 +46,8 @@ module DTITools
           return max
         end
 
-        def apparent_diffusion_coefficients
-          @acquisition_directions.map{ |acquisition_direction| @tensor.adc(acquisition_direction) }
+        def apparent_diffusion_coefficients(tensor)
+          @acquisition_directions.map{ |acquisition_direction| tensor.adc(acquisition_direction) }
         end
       end
     end

@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require "#{File.dirname(__FILE__)}/../dti_tools"
+require 'thor'
+
+class CLI < Thor
+  desc "shs_classification TENSOR_IMAGE_PATH MASK_IMAGE_PATH ACQUISITION_DIRECTIONS_PATH SIGNIFICANCE_LEVEL OUTPUT_PATH", "Classifies each voxel of the given tensor into orders of SHS accordingly to Parker et al methodology"
+  def shs_classification(tensor_image_path, mask_image_path, acquisition_directions_path, significance_level, output_path)
+    mapper = DTITools::Tools::VoxelClassification::Mapper.new(tensor_image_path: tensor_image_path,
+                                                              mask_image_path: mask_image_path,
+                                                              acquisition_directions_path: acquisition_directions_path,
+                                                              significance_level: significance_level.to_f,
+                                                              output_path: output_path)
+
+    mapper.classify
+    mapper.save
+  end
+end
+
+CLI.start(ARGV)
