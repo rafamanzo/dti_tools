@@ -17,7 +17,7 @@ module DTITools
         end
 
         def out?(i,j,k)
-          self[i,j,k] == 0
+          self[i,j,k].to_i == 0
         end
 
         def in?(i,j,k)
